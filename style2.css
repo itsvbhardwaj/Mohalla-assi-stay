@@ -1,0 +1,405 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,500;1,700;1,800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* mobile first aproach- media queries */
+
+@media only screen and (max-width: 767px) {
+  body {
+    background-color: rgb(255, 255, 255);
+  }
+  header {
+    height: 50px;
+
+    background-color: rgb(255, 255, 255);
+    margin-top: 5px;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 10;
+  }
+
+  header img {
+    display: none;
+  }
+
+  header h2 {
+    color: #ff0000;
+    border-radius: 2px;
+    font-style: italic;
+  }
+
+  #menuToggle {
+    display: block;
+    position: relative;
+    top: 5px;
+    left: 5px;
+
+    z-index: 1;
+
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  #menuToggle a {
+    text-decoration: none;
+    color: #232323;
+
+    transition: color 0.3s ease;
+  }
+
+  #menuToggle a:hover {
+    color: tomato;
+  }
+
+  #menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+
+    cursor: pointer;
+
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+
+    -webkit-touch-callout: none;
+  }
+
+  /*
+ * Just a quick hamburger
+ */
+  #menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+
+    background: #170436;
+    border-radius: 3px;
+
+    z-index: 1;
+
+    transform-origin: 4px 0px;
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  }
+
+  #menuToggle span:first-child {
+    transform-origin: 0% 0%;
+  }
+
+  #menuToggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
+
+  /* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+  #menuToggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #ff0000;
+  }
+
+  /*
+ * But let's hide the middle one.
+ */
+  #menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+
+  /*
+ * Ohyeah and the last one should go the other direction
+ */
+  #menuToggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+
+  /*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+  #menu {
+    position: absolute;
+
+    width: 100vh;
+    height: 100vh;
+
+    margin: -70px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(255, 85, 0, 1) 0%,
+      rgba(255, 227, 64, 1) 99%
+    );
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+
+    transform-origin: 0% 0%;
+    transform: translate(-200%, 0);
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    border-radius: 10px;
+  }
+
+  #menu li {
+    padding: 10px 0;
+    font-size: 30px;
+    color: white;
+  }
+
+  /*
+ * And let's slide it in from the left
+ */
+  #menuToggle input:checked ~ ul {
+    transform: none;
+  }
+
+  .button-3 {
+    appearance: none;
+    background-color: #22ff00;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .button-3:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+  }
+
+  .button-3:hover {
+    background-color: #2c974b;
+  }
+
+  .button-3:focus {
+    box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
+    outline: none;
+  }
+
+  .button-3:disabled {
+    background-color: #94d3a2;
+    border-color: rgba(27, 31, 35, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    cursor: default;
+  }
+
+  .button-3:active {
+    background-color: #298e46;
+    box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+  }
+
+  main .section1 {
+    background-color: #ffffff;
+    width: 100%;
+    height: 20em;
+    margin-top: 1em;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  div#slider {
+    overflow: hidden;
+    object-fit: cover;
+    margin-top: 1em;
+  }
+  div#slider figure img {
+    width: 20%;
+    float: left;
+  }
+  div#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    animation: 15s slidy infinite;
+  }
+  @keyframes slidy {
+    0% {
+      left: 0%;
+    }
+    20% {
+      left: 0%;
+    }
+    25% {
+      left: -100%;
+    }
+    45% {
+      left: -100%;
+    }
+    50% {
+      left: -200%;
+    }
+    70% {
+      left: -200%;
+    }
+    75% {
+      left: -300%;
+    }
+    95% {
+      left: -300%;
+    }
+    100% {
+      left: -400%;
+    }
+  }
+  main h2 {
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: #059b3c;
+    color: rgb(255, 89, 0);
+
+    font-style: italic;
+    font-weight: 800;
+    margin-top: 1em;
+  }
+  main p {
+    text-align: left;
+    color: #212022;
+    margin-top: 1em;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  main p .edit1 {
+    color: rgb(255, 81, 0);
+  }
+  main p .edit2 {
+    color: rgb(122, 8, 175);
+  }
+  main p .edit3 {
+    color: rgb(17, 147, 54);
+  }
+
+  .scroll-btn {
+    position: fixed;
+
+    height: 70px;
+    width: 70px;
+    background-color: #f1ed00;
+    font-weight: 800;
+    font-size: 30px;
+    border-radius: 50%;
+    color: rgb(255, 0, 0);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 11;
+  }
+
+  .section-2 {
+    background-image: url(./images/service.jpg);
+    background-size: cover;
+    opacity: 50%;
+    background-repeat: no-repeat;
+  }
+
+  .section-3 {
+    background-image: url(./images/boat.jpg);
+    background-size: cover;
+    opacity: 50%;
+    background-repeat: no-repeat;
+  }
+  .section-4 {
+    background-image: url(./images/yoga.jpg);
+    background-size: cover;
+    opacity: 50%;
+    background-repeat: no-repeat;
+  }
+  .section-5 {
+    background-image: url(./images/image2.jpg);
+    background-size: cover;
+    opacity: 50%;
+    background-repeat: no-repeat;
+  }
+  .section-6 {
+    background-image: url(./images/image2.jpg);
+    background-size: cover;
+    opacity: 50%;
+    background-repeat: no-repeat;
+  }
+  .social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 1em 5px 1em 5px;
+    background-color: rgb(242, 232, 232);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+    border: 2px solid gray;
+  }
+  .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+
+  .fa:hover {
+    opacity: 0.7;
+  }
+
+  .fa-facebook {
+    background: #3b5998;
+    color: white;
+  }
+
+  .fa-twitter {
+    background: #55acee;
+    color: white;
+  }
+  .fa-linkedin {
+    background: #007bb5;
+    color: white;
+  }
+
+  .fa-youtube {
+    background: #bb0000;
+    color: white;
+  }
+
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+}
